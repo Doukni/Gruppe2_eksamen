@@ -59,3 +59,21 @@ body {
     width: 100%;
     margin: 0 auto;
 }
+
+.create-account-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.create-account-link a {
+    color: #333;
+    text-decoration: none;
+    font-family: Consolas, sans-serif;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.create-account-link a:hover {
+    color: #555;
+    text-decoration: underline;
+}

@@ -53,3 +53,8 @@ body {
 .login-box button:hover {
     background-color: #a9a9a9;
 }
+
+.link{
+    margin-top: 10px;
+    padding-left: 55px;
+}
