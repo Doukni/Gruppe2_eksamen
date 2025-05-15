@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Consolas, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.create-account-box {
+    background-color: #d3d3d3;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+}
+
+.create-account-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
+.create-account-box input,
+.create-account-box select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-family: Consolas, sans-serif;
+    font-size: 14px;
+}
+
+.create-account-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #bbb;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: Consolas, sans-serif;
+}
+
+.create-account-box button:hover {
+    background-color: #a9a9a9;
+}
+
+.form-row {
+    width: 100%;
+    margin: 0 auto;
+}

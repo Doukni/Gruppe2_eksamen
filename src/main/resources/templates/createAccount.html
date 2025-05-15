@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>createAccount</title>
+    <link rel="stylesheet" th:href="@{createAccountcss.css}">
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createAccount</title>
+    <link rel="stylesheet" href="createaccountcss.css">
+</head>
+<body>
+
+<div class="create-account-box">
+    <h2>Opret bruger</h2>
+    <form action="/create-account" method="post">
+        <input type="text" name="firstname" placeholder="Navn" required>
+        <input type="text" name="lastname" placeholder="Efternavn" required>
+        <input type="text" name="username" placeholder="Brugernavn" required>
+        <input type="password" name="password" placeholder="Adgangskode" required>
+
+        <select name="option" required>
+            <option value="" disabled selected>Arbejdsstilling</option>
+            <option value="1">Chef</option>
+            <option value="2">Skade afdeling</option>
+            <option value="3">Udlejning</option>
+            <option value="4">Rapportskriver</option>
+            <option value="5">Økonom</option>
+        </select>
+
+        <button type="submit">Opret bruger</button>
+    </form>
+</div>
+
+
+</body>
+</html>
+
+</body>
+</html>
