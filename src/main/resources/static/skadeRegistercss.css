@@ -32,3 +32,12 @@ body {
 .sidebar a:hover {
     background-color: #bbb;
 }
+
+.user-info {
+    margin-top: auto;
+    padding: 15px;
+    padding-top: 175px;
+    background-color: #d3d3d3;
+    text-align: center;
+    font-size: 10px;
+}

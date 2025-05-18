@@ -18,6 +18,9 @@ public class User {
     private String workId; // work username
 
     @Column
+    private String password;
+
+    @Column
     private String occupation; // fx udlejer, chef osv...
 
     public int getId() {
@@ -58,6 +61,14 @@ public class User {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 // Repo gør at man kan gemme, update og slette data fra User table
 public interface UserRepo extends CrudRepository<User, Integer> {
+    User findByWorkId(String workId);
 }

@@ -13,6 +13,11 @@
     <a th:href="@{/rapport}">Rapport</a>
     <a th:href= "@{/economy}"> Økonomi</a>
     <a th:href="@{/login}">Login</a>
+
+    <div class="user-info">
+        <h1>Velkommen, <span th:text="${user != null ? user.name : 'Guest'}">User</span></h1>
+    </div>
+
 </div>
 
 
