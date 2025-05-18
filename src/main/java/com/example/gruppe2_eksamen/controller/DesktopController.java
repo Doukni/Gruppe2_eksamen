@@ -16,6 +16,7 @@ public class DesktopController {
     @GetMapping("/")// mainpage/desktop så skal man ikke skrive noget i / fx (/desktop)
     public String desktopPage(HttpSession session, Model model ) {
 
+
         User loggedUser = (User) session.getAttribute("loggedUser");
 
         if (loggedUser != null) {
@@ -24,4 +25,5 @@ public class DesktopController {
 
         return "desktop";
     }
+
 }
