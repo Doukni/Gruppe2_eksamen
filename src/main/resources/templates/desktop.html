@@ -11,6 +11,7 @@
 <div class="sidebar">
     <h2 class="menu-title">Menu</h2>
     <a th:href="@{/opretBil}">Opret bil</a>
+    <a th:href="@{/opretKunde}">Opret Kunde</a>
     <a th:href="@{/skadeRegister}">Skade registrering</a>
     <a th:href="@{/rapport}">Rapport</a>
     <a th:href= "@{/economy}"> Økonomi</a>
@@ -22,6 +23,8 @@
         <h1>Velkommen, <span th:text="${user != null ? user.name : 'Gæst'}">User</span></h1>
     </div>
 </div>
+
+
 
 </body>
 </html>
