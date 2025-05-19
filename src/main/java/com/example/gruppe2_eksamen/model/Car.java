@@ -24,8 +24,9 @@ public class Car {
     @Column
     private String licensePlate;
 
-    @Column
+    @Column (length=1000)
     private String carImageUrl;
+
 
     @Column // limeted(150 dage), unlimted(3 måneder)
     private String limitedOrUnlimited;

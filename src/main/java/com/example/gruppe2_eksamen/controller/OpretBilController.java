@@ -36,16 +36,40 @@ public class OpretBilController {
 
     @PostMapping("/opretBil")
     public String createCar(@ModelAttribute Car car, HttpSession session, Model model) {
-        carRepo.save(car);
-
         User loggedUser = (User) session.getAttribute("loggedUser");
         if (loggedUser != null) {
             model.addAttribute("user", loggedUser);
         }
 
+        // Billed-URL-validering
+        String imageUrl = car.getCarImageUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            try {
+                java.net.URL url = new java.net.URL(imageUrl);
+                java.net.HttpURLConnection connection = (java.net.HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("HEAD");
+                connection.setConnectTimeout(3000);
+                connection.setReadTimeout(3000);
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode != 200) {
+                    model.addAttribute("urlError", "Billed-URL virker ikke eller findes ikke.");
+                    model.addAttribute("car", car);
+                    model.addAttribute("cars", carRepo.findAll());
+                    return "opretBil";
+                }
+            } catch (Exception e) {
+                model.addAttribute("urlError", "Ugyldig billede-URL.");
+                model.addAttribute("car", car);
+                model.addAttribute("cars", carRepo.findAll());
+                return "opretBil";
+            }
+        }
+
+        carRepo.save(car);
         model.addAttribute("message", "Bil oprettet!");
         model.addAttribute("car", new Car()); // Clear form
-        model.addAttribute("cars", carRepo.findAll()); //genstarter automatisk så man ka se bilen
+        model.addAttribute("cars", carRepo.findAll()); // Genopfrisk liste
 
         return "opretBil";
     }

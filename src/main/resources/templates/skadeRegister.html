@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>skadeRegister</title>
-    <link rel="stylesheet" th:href="@{skadeRegistercss.css}">
+    <title>Sakde Registrering</title>
+    <link rel="stylesheet" th:href="@{/skadeRegistercss.css}">
 </head>
 <body>
 <div class="sidebar">
@@ -22,7 +22,30 @@
     </div>
 </div>
 
+<div class="main-content">
+    <div class="form-box">
+        <h2>Registrer en skade</h2>
 
+        <form th:action="@{/skadeRegister}" method="post" th:object="${skade}">
+            <label>Skadetype:</label>
+            <input type="text" th:field="*{typeSkade}" required />
+
+            <label>Beskrivelse:</label>
+            <textarea th:field="*{skadeBeskrivelse}" rows="4" required></textarea>
+
+            <label>Billede URL (valgfrit):</label>
+            <input type="text" th:field="*{billedeUrl}" />
+
+            <label>Vælg bil:</label>
+            <select th:field="*{car}" required>
+                <option value="" disabled selected>Vælg bil</option>
+                <option th:each="c : ${cars}" th:value="${c.id}" th:text="${c.brand + ' ' + c.model + ' (' + c.licensePlate + ')'}"></option>
+            </select>
+
+            <button type="submit">Gem Skade</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

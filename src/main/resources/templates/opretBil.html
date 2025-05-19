@@ -26,12 +26,17 @@
 <div class="main-content">
     <div class="form-box">
         <h2>Opret bil</h2>
+
+        <div th:if="${urlError}" class="message error" th:text="${urlError}"></div>
+        <div th:if="${message}" class="message success" th:text="${message}"></div>
+
         <form th:action="@{/opretBil}" method="post" th:object="${car}">
             <input type="text" th:field="*{brand}" placeholder="Mærke" required>
             <input type="text" th:field="*{model}" placeholder="Model" required>
             <input type="text" th:field="*{color}" placeholder="Farve" required>
             <input type="text" th:field="*{licensePlate}" placeholder="Nummerplade" required>
             <input type="text" th:field="*{carImageUrl}" placeholder="Billede URL">
+
 
             <select th:field="*{limitedOrUnlimited}" required>
                 <option value="" disabled selected>Leje type</option>
@@ -76,6 +81,17 @@
             </div>
         </div>
     </div>
+</div>
+
+    <script>
+        // Billed-preview når brugeren indtaster URL
+        document.getElementById('carImageUrlInput').addEventListener('input', function () {
+            const img = document.getElementById('imagePreview');
+            const url = this.value;
+            img.src = url;
+            img.style.display = url ? 'block' : 'none';
+        });
+    </script>
 
 
 
