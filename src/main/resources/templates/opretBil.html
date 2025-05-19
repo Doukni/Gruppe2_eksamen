@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{opretBilcss.css}">
 </head>
 <body>
+
 <div class="sidebar">
     <h2 class="menu-title">Menu</h2>
     <a th:href="@{/opretBil}">Opret bil</a>
@@ -18,8 +19,9 @@
     <div class="user-info">
         <h1>Velkommen, <span th:text="${user != null ? user.name : 'Gæst'}">User</span></h1>
     </div>
-
 </div>
+
+
 
 
 </body>
