@@ -39,7 +39,8 @@ public class OpretKundeController {
 
         model.addAttribute("kunde", new Kunde());
         model.addAttribute("kunder", kundeRepo.findAll());
-        model.addAttribute("cars", carRepo.findAll());
+        // Kun tilgængelige biler
+        model.addAttribute("cars", carRepo.findByAvailability("Tilgængelig"));
 
 
         return "opretKunde";
@@ -62,7 +63,11 @@ public class OpretKundeController {
         }
 
 
-        carRepo.findById(carId).ifPresent(kunde::setCar);
+        carRepo.findById(carId).ifPresent(car -> {
+            car.setAvailability("Udlejet");
+            carRepo.save(car);
+            kunde.setCar(car);
+        });
 
         kundeRepo.save(kunde);
 

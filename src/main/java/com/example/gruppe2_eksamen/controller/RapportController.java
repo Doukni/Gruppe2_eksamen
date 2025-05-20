@@ -1,14 +1,12 @@
 package com.example.gruppe2_eksamen.controller;
 
 
-import com.example.gruppe2_eksamen.model.Car;
 import com.example.gruppe2_eksamen.model.Rapport;
 import com.example.gruppe2_eksamen.model.Skade;
 import com.example.gruppe2_eksamen.model.User;
 import com.example.gruppe2_eksamen.repository.CarRepo;
 import com.example.gruppe2_eksamen.repository.RapportRepo;
 import com.example.gruppe2_eksamen.repository.SkadeRepo;
-import com.example.gruppe2_eksamen.repository.UserRepo;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
