@@ -58,14 +58,41 @@ public class RapportController {
 
             // Find skader for bilen
             List<Skade> skader = skadeRepo.findByCar_Id(carId);
+
             if (!skader.isEmpty()) {
-                StringBuilder sb = new StringBuilder("Skader:\n");
-                for (Skade skade : skader) {
-                    sb.append("- ").append(skade.getSkadeBeskrivelse()).append("\n");
+                StringBuilder sb = new StringBuilder();
+
+                // 1. Tilføj det brugeren selv har skrevet
+                String brugerTekst = rapport.getBeskrivelse();
+                if (brugerTekst != null && !brugerTekst.isBlank()) {
+                    sb.append("Rapport:\n").append(brugerTekst).append("\n\n");
                 }
+
+                // 2. Tilføj skader
+                sb.append("Skader:\n");
+                double totalPris = 0.0;
+
+                for (Skade skade : skader) {
+                    sb.append("- ").append(skade.getSkadeBeskrivelse());
+
+                    if (skade.getPris() != null) {
+                        sb.append(" (").append(skade.getPris()).append(" kr)");
+                        totalPris += skade.getPris();
+                    } else {
+                        sb.append(" (ingen pris angivet)");
+                    }
+
+                    sb.append("\n");
+                }
+
+                // 3. Samlet pris
+                sb.append("\nSamlet pris: ").append(totalPris).append(" kr");
+
+                // 4. Sæt samlet beskrivelse i rapporten
                 rapport.setBeskrivelse(sb.toString());
             }
         }
+
         rapportRepo.save(rapport);
         return "redirect:/rapport";
     }

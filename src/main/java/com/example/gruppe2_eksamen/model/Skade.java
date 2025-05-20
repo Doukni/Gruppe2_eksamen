@@ -20,6 +20,9 @@ public class Skade {
     @ManyToOne
     private Car car;
 
+    @Column
+    private Double pris;
+
 
     public long getId() {
         return id;
@@ -67,6 +70,14 @@ public class Skade {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public Double getPris() {
+        return pris;
+    }
+
+    public void setPris(Double pris) {
+        this.pris = pris;
     }
 }
 

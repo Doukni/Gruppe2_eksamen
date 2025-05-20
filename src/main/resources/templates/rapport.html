@@ -45,8 +45,12 @@
         <h2>Gemte rapporter</h2>
         <div class="rapport-box-wrapper">
             <div class="rapport-box" th:each="r : ${rapporter}">
-                <strong th:text="${r.titel}"></strong>
-                <p th:text="${r.beskrivelse}"></p>
+                <div class="rapport-header">
+                    <strong th:text="${r.titel}">Rapport titel</strong>
+                </div>
+                <div class="rapport-body">
+                    <pre class="rapport-beskrivelse" th:text="${r.beskrivelse}">Beskrivelse</pre>
+                </div>
             </div>
         </div>
     </div>

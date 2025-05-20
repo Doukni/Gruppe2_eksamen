@@ -36,6 +36,9 @@
             <label>Billede URL (valgfrit):</label>
             <input type="text" th:field="*{billedeUrl}" />
 
+            <label>Pris (DKK):</label>
+            <input type="number" step="0.01" th:field="*{pris}" required />
+
             <label>Vælg bil:</label>
             <select th:field="*{car}" required>
                 <option value="" disabled selected>Vælg bil</option>

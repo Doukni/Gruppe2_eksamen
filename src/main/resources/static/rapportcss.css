@@ -46,12 +46,13 @@ body {
     padding: 10px;
 }
 
+/* Indhold udenfor sidebar */
 .main-content-wrapper {
     margin-left: 220px;
     padding: 40px;
 }
 
-/* Formular */
+/* Formular til oprettelse */
 .main-content {
     max-width: 600px;
     margin: 0 auto;
@@ -122,20 +123,37 @@ form button:hover {
 
 .rapport-box {
     background-color: #ffffff;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
     width: 300px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #888;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.2s ease;
+
+}
+
+.rapport-box:hover {
+    transform: translateY(-3px);
 }
 
 .rapport-box strong {
-    font-size: 16px;
-    color: #000;
-    display: block;
-    margin-bottom: 8px;
+    font-size: 17px;
+    color: #222;
+    margin-bottom: 6px;
 }
 
-.rapport-box p {
-    font-size: 14px;
-    color: #444;
+.rapport-beskrivelse {
+    font-family: Consolas, monospace;
+    font-size: 13.5px;
+    color: #333;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    line-height: 1.4;
+    max-height: 200px;
+    overflow-y: auto;
 }
