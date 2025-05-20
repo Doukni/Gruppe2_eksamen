@@ -16,6 +16,9 @@ public class Rapport {
     @Column(length = 5000)
     private String beskrivelse;
 
+    @ManyToOne
+    private Car car;
+
 
     public Long getId() {
         return id;
@@ -41,6 +44,13 @@ public class Rapport {
         this.beskrivelse = beskrivelse;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
 
 }
