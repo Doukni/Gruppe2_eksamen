@@ -27,21 +27,23 @@ public class Car {
     @Column (length=1000)
     private String carImageUrl;
 
-
-    @Column // limeted(150 dage), unlimted(3 måneder)
-    private String limitedOrUnlimited;
-
     @Column // skadet, god osv
     private String carCondition;
 
     @Column //udlejet eller ej
     private String availability;
 
-    @Column
-    private LocalDate returnDate;
+    public Kunde getKunde() {
+        return kunde;
+    }
 
-    @Column
-    private LocalDate deliveryDate;
+    public void setKunde(Kunde kunde) {
+        this.kunde = kunde;
+    }
+
+    @OneToOne(mappedBy = "car")
+    private Kunde kunde;
+
 
     public int getId() {
         return id;
@@ -91,13 +93,6 @@ public class Car {
         this.carImageUrl = carImageUrl;
     }
 
-    public String getLimitedOrUnlimited() {
-        return limitedOrUnlimited;
-    }
-
-    public void setLimitedOrUnlimited(String limitedOrUnlimited) {
-        this.limitedOrUnlimited = limitedOrUnlimited;
-    }
 
     public String getCarCondition() {
         return carCondition;
@@ -115,21 +110,6 @@ public class Car {
         this.availability = availability;
     }
 
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public LocalDate getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(LocalDate deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
 }
 
 

@@ -24,5 +24,40 @@
 </div>
 
 
+
+<div class="main-content">
+    <div class="form-box">
+        <h2>Opret Kunde</h2>
+
+        <div th:if="${urlError}" class="message error" th:text="${urlError}"></div>
+        <div th:if="${message}" class="message success" th:text="${message}"></div>
+
+        <form th:action="@{/opretKunde}" method="post" th:object="${kunde}">
+            <input type="text" th:field="*{name}" placeholder="Fornavn" required>
+            <input type="text" th:field="*{lastname}" placeholder="Efternavn" required>
+            <input type="text" th:field="*{age}" placeholder="Alder" min="18" required>
+            <input type="text" th:field="*{driverLicenseNumber}" placeholder="Kørekortnummer" required>
+            <input type="email" th:field="*{email}" placeholder="Email" required>
+            <input type="text" th:field="*{phoneNumber}" placeholder="Telefonnummer" required>
+
+            <label for="car">Vælg bil:</label>
+            <select id="car" name="carId" required>
+                <option value="" disabled selected>-- Vælg bil --</option>
+                <option th:each="car : ${cars}"
+                        th:value="${car.id}"
+                        th:text="${car.brand + ' ' + car.model + ' (' + car.licensePlate + ')'}">
+                </option>
+            </select>
+
+            <label for="leaseType">Leasingtype:</label>
+            <select id="leaseType" th:field="*{limitedOrUnlimited}" required>
+                <option value="Limited">Limited(150 dage)</option>
+                <option value="Unlimited">Unlimited(3 måneder)</option>
+            </select>
+
+            <button type="submit">Opret Kunde</button>
+        </form>
+    </div>
+
 </body>
 </html>

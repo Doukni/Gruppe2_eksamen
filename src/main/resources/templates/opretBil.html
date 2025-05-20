@@ -38,11 +38,13 @@
             <input type="text" th:field="*{carImageUrl}" placeholder="Billede URL">
 
 
+            <!-- lig i opret kunde
             <select th:field="*{limitedOrUnlimited}" required>
                 <option value="" disabled selected>Leje type</option>
                 <option value="Limited">Begrænset (150 dage)</option>
                 <option value="Unlimited">Ubegrænset (3 måneder)</option>
             </select>
+            -->
 
             <select th:field="*{carCondition}" required>
                 <option value="" disabled selected>Stand</option>
@@ -57,11 +59,14 @@
                 <option value="Tilgængelig">Tilgængelig</option>
             </select>
 
+            <!-- i opret kunde
             <label>Leveringsdato:</label>
             <input type="date" th:field="*{deliveryDate}">
 
             <label>Afleveringsdato:</label>
             <input type="date" th:field="*{returnDate}">
+            -->
+
 
             <button type="submit">Opret bil</button>
         </form>
