@@ -30,6 +30,11 @@ public class Kunde {
     @Column
     private String phoneNumber;
 
+    @Column
+    private Boolean kreditgodkendt;
+
+    @Column
+    private Boolean betaltForsteYdelse;
 
     @Column // limeted(150 dage), unlimted(3 måneder)
     private String limitedOrUnlimited;
@@ -140,5 +145,20 @@ public class Kunde {
         this.phoneNumber = phoneNumber;
     }
 
+    public Boolean getKreditgodkendt() {
+        return kreditgodkendt;
+    }
+
+    public void setKreditgodkendt(Boolean kreditgodkendt) {
+        this.kreditgodkendt = kreditgodkendt;
+    }
+
+    public Boolean getBetaltForsteYdelse() {
+        return betaltForsteYdelse;
+    }
+
+    public void setBetaltForsteYdelse(Boolean betaltForsteYdelse) {
+        this.betaltForsteYdelse = betaltForsteYdelse;
+    }
 
 }
