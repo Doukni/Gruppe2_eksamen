@@ -7,6 +7,7 @@
 </head>
 <body>
 
+
 <div class="sidebar">
     <h2 class="menu-title">Menu</h2>
     <a th:href="@{/opretBil}">Opret bil</a>
@@ -14,6 +15,7 @@
     <a th:href="@{/skadeRegister}">Skade registrering</a>
     <a th:href="@{/rapport}">Rapport</a>
     <a th:href= "@{/economy}"> Økonomi</a>
+    <a th:href= "@{/forhaandsaftale}"> Forhåndsaftale</a>
     <a th:if="${user == null}" th:href="@{/login}">Login</a>
     <a th:if="${user != null}" th:href="@{/logout}">Logout</a>
 
@@ -22,7 +24,6 @@
         <h1>Velkommen, <span th:text="${user != null ? user.name : 'Gæst'}">User</span></h1>
     </div>
 </div>
-
 <div class="main-content">
     <div class="form-box">
         <h2>Opret bil</h2>
