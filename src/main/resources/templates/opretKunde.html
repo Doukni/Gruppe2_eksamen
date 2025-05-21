@@ -54,6 +54,18 @@
                 <option value="Unlimited">Unlimited (3 måneder)</option>
             </select>
 
+            <label>Kreditgodkendelse:</label>
+            <select th:field="*{kreditgodkendt}">
+                <option value="true">Godkendt</option>
+                <option value="false">Ikke godkendt</option>
+            </select>
+
+            <label>Førstegangsbetaling:</label>
+            <select th:field="*{betaltForsteYdelse}">
+                <option value="true">Betalt</option>
+                <option value="false">Ikke betalt</option>
+            </select>
+
             <button type="submit">Opret Kunde</button>
         </form>
     </div>

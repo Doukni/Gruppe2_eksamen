@@ -49,26 +49,37 @@ public class OpretKundeController {
 
     @PostMapping("/opretKunde")
     public String opretKunde(@ModelAttribute Kunde kunde,
-                             @RequestParam("carId") int carId) {
+                             @RequestParam("carId") int carId,
+                             Model model) {
 
-        // delivery date i dag
+        // Tjek kredit og betaling
+        if (!kunde.getKreditgodkendt() || !kunde.getBetaltForsteYdelse()) {
+            model.addAttribute("urlError", "Kunden er ikke kreditgodkendt eller mangler betaling.");
+            model.addAttribute("kunde", kunde);
+            model.addAttribute("kunder", kundeRepo.findAll());
+            model.addAttribute("cars", carRepo.findByAvailability("Tilgængelig"));
+            return "opretKunde";
+        }
+
+        // Sæt leveringsdato
         LocalDate deliveryDate = LocalDate.now();
         kunde.setDeliveryDate(deliveryDate);
 
-        // beregner leasing periode
+        // Beregn returneringsdato afhængig af leasingtype
         if ("Limited".equalsIgnoreCase(kunde.getLimitedOrUnlimited())) {
             kunde.setReturnDate(deliveryDate.plusDays(150));
         } else if ("Unlimited".equalsIgnoreCase(kunde.getLimitedOrUnlimited())) {
             kunde.setReturnDate(deliveryDate.plusMonths(3));
         }
 
-
+        // Find bilen og sæt status til udlejet
         carRepo.findById(carId).ifPresent(car -> {
             car.setAvailability("Udlejet");
             carRepo.save(car);
             kunde.setCar(car);
         });
 
+        // Gem kunde
         kundeRepo.save(kunde);
 
         return "redirect:/opretKunde";
