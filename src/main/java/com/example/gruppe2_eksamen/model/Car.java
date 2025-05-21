@@ -33,6 +33,22 @@ public class Car {
     @Column //udlejet eller ej
     private String availability;
 
+    @Column
+    private Double price;
+
+    @OneToOne(mappedBy = "car")
+    private Kunde kunde;
+
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+
     public Kunde getKunde() {
         return kunde;
     }
@@ -40,10 +56,6 @@ public class Car {
     public void setKunde(Kunde kunde) {
         this.kunde = kunde;
     }
-
-    @OneToOne(mappedBy = "car")
-    private Kunde kunde;
-
 
     public int getId() {
         return id;
@@ -92,7 +104,6 @@ public class Car {
     public void setCarImageUrl(String carImageUrl) {
         this.carImageUrl = carImageUrl;
     }
-
 
     public String getCarCondition() {
         return carCondition;

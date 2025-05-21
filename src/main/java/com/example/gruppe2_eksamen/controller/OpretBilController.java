@@ -52,7 +52,7 @@ public class OpretBilController {
                 connection.setReadTimeout(3000);
 
                 int responseCode = connection.getResponseCode();
-                if (responseCode != 200) {
+                if (responseCode < 200 || responseCode >= 400) {
                     model.addAttribute("urlError", "Billed-URL virker ikke eller findes ikke.");
                     model.addAttribute("car", car);
                     model.addAttribute("cars", carRepo.findAll());
@@ -65,6 +65,8 @@ public class OpretBilController {
                 return "opretBil";
             }
         }
+
+
 
         carRepo.save(car);
         model.addAttribute("message", "Bil oprettet!");
