@@ -68,6 +68,8 @@ public class OpretBilController {
 
 
 
+
+
         carRepo.save(car);
         model.addAttribute("message", "Bil oprettet!");
         model.addAttribute("car", new Car()); // Clear form
