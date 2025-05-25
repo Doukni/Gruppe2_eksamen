@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CarRepo extends CrudRepository<Car, Integer> {
     List<Car> findByAvailability(String availability);
+    List<Car> findByIsReturnedTrue();
 }

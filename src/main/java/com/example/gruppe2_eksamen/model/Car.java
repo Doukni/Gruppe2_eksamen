@@ -39,6 +39,17 @@ public class Car {
     @OneToOne(mappedBy = "car")
     private Kunde kunde;
 
+    @Column
+    private Boolean isReturned;
+
+    public Boolean isReturned() {
+        return isReturned;
+    }
+
+    public void setReturned(Boolean returned) {
+        this.isReturned = returned;
+    }
+
 
     public Double getPrice() {
         return price;
