@@ -1,6 +1,5 @@
 package com.example.gruppe2_eksamen.controller;
 
-
 import com.example.gruppe2_eksamen.model.Skade;
 import com.example.gruppe2_eksamen.model.User;
 import com.example.gruppe2_eksamen.repository.CarRepo;
@@ -24,9 +23,8 @@ public class SkadeRegisterController {
     @Autowired
     private CarRepo carRepo;
 
-
     @GetMapping("/skadeRegister")
-        public String skadeRegisterPage(HttpSession session, Model model){
+    public String skadeRegisterPage(HttpSession session, Model model) {
 
         User loggedUser = (User) session.getAttribute("loggedUser");
 
@@ -35,12 +33,11 @@ public class SkadeRegisterController {
         }
 
         model.addAttribute("skade", new Skade());
-        model.addAttribute("cars", carRepo.findAll());
+        model.addAttribute("cars", carRepo.findByIsReturnedTrue()); // only returned cars
 
-            return "skadeRegister";
 
+        return "skadeRegister";
     }
-
 
     @PostMapping("/skadeRegister")
     public String registrerSkade(@ModelAttribute Skade skade) {
@@ -48,5 +45,4 @@ public class SkadeRegisterController {
         skadeRepo.save(skade);
         return "redirect:/skadeRegister";
     }
-
 }

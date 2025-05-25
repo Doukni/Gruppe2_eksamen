@@ -28,7 +28,11 @@
         <form th:action="@{/tilbagelevering}" method="post" th:object="${tilbagelevering}">
             <label>Vælg bil:</label>
             <select th:field="*{car}" required>
-                <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.brand + ' ' + car.model + ' - ' + car.licensePlate}"></option>
+                <option th:each="car : ${cars}"
+                        th:if="${car.returned == null or !car.returned}"
+                        th:value="${car.id}"
+                        th:text="${car.brand + ' ' + car.model + ' - ' + car.licensePlate}">
+                </option>
             </select>
             <button type="submit">Registrer tilbagelevering</button>
         </form>

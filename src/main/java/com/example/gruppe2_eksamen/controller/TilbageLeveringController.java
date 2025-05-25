@@ -67,6 +67,7 @@ public class TilbageLeveringController {
 
 
         car.setAvailability("Klar til afhentning");
+        car.setReturned(true);
         carRepo.save(car);
 
         return "redirect:/tilbagelevering";
