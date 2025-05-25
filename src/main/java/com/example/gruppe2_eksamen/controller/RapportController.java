@@ -46,7 +46,6 @@ public class RapportController {
     @PostMapping("/rapport")
     public String rapportPost(@ModelAttribute Rapport rapport, HttpSession session) {
 
-
         // Hent bilen ud fra det valgte ID
         if (rapport.getCar() != null && rapport.getCar().getId() != 0) {
             int carId = rapport.getCar().getId();

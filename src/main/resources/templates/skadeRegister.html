@@ -9,12 +9,11 @@
 
 <div class="sidebar">
     <h2 class="menu-title">Menu</h2>
-    <a th:href="@{/desktop}">Overblik</a>
+    <a th:href="@{/}">Overblik</a>
     <a th:href="@{/opretBil}">Opret bil</a>
     <a th:href="@{/opretKunde}">Opret Kunde</a>
     <a th:href="@{/skadeRegister}">Skade registrering</a>
     <a th:href="@{/rapport}">Rapport</a>
-    <a th:href= "@{/economy}"> Økonomi</a>
     <a th:href= "@{/forhaandsaftale}"> Forhåndsaftale</a>
     <a th:href="@{/tilbagelevering}">Tilbagelevering</a>
     <a th:if="${user == null}" th:href="@{/login}">Login</a>
