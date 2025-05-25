@@ -12,23 +12,23 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 200px;
+    width: 12.5rem;
     height: 100%;
     background-color: #d3d3d3;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 1.25rem;
+    box-shadow: 0.125rem 0 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 .menu-title {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 1.875rem;
+    font-size: 1.5rem;
     color: #333;
 }
 
 .sidebar a {
     display: block;
-    padding: 12px 20px;
+    padding: 0.75rem 1.25rem;
     color: #333;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -40,67 +40,67 @@ body {
 
 .user-info {
     margin-top: auto;
-    padding: 15px;
-    padding-top: 175px;
+    padding: 0.9375rem;
+    padding-top: 10.9375rem;
     background-color: #d3d3d3;
     text-align: center;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 
 .main-content {
     display: flex;
-    margin-left: 200px;
-    padding: 40px;
-    gap: 40px;
+    margin-left: 12.5rem;
+    padding: 2.5rem;
+    gap: 2.5rem;
     align-items: flex-start;
 }
 
 .form-box {
     background-color: #d3d3d3;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    padding: 1.25rem 1.875rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.125rem 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+    width: 21.875rem;
 }
 
 .form-box h2,
 .form-box h3 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 22px;
+    margin-bottom: 1.25rem;
+    font-size: 1.375rem;
     color: #333;
 }
 
 .form-box input,
 .form-box select {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-family: Consolas, sans-serif;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .form-box label {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #333;
     display: block;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .form-box button {
     width: 100%;
-    padding: 12px;
+    padding: 0.75rem;
     background-color: #bbb;
     color: #333;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 0.25rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
     font-family: Consolas, sans-serif;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .form-box button:hover {
@@ -108,36 +108,36 @@ body {
 }
 
 .car-display {
-    width: 750px;
+    width: 46.875rem;
     flex: 1;
-    padding-bottom: 400px;
-    margin-left: 40px;
+    padding-bottom: 25rem;
+    margin-left: 2.5rem;
 }
 
 .car-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .car-card {
     background-color: #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.9375rem;
+    box-shadow: 0.0625rem 0.0625rem 0.375rem rgba(0, 0, 0, 0.1);
     font-family: Consolas, sans-serif;
 }
 
 .car-card p {
-    margin: 5px 0;
-    font-size: 14px;
+    margin: 0.3125rem 0;
+    font-size: 0.875rem;
     color: #333;
 }
 
 .car-img {
     width: 100%;
-    max-height: 150px;
+    max-height: 9.375rem;
     object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    border-radius: 0.375rem;
+    margin-bottom: 0.625rem;
 }

@@ -8,23 +8,23 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 200px;
+    width: 15vw;
     height: 100%;
     background-color: #d3d3d3;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding-top: 1.25rem;
+    box-shadow: 0.125rem 0 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 .menu-title {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 1.875rem;
+    font-size: 1.5rem;
     color: #333;
 }
 
 .sidebar a {
     display: block;
-    padding: 12px 20px;
+    padding: 0.75rem 1.25rem;
     color: #333;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -36,73 +36,72 @@ body {
 
 .user-info {
     margin-top: auto;
-    padding: 15px;
-    padding-top: 175px;
+    padding: 0.9375rem;
+    padding-top: 10.9375rem;
     background-color: #d3d3d3;
     text-align: center;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 
 .rented-summary-container {
-    text-align: center; /* centrér boksen på siden */
-    margin-top: 30px;
+    text-align: center;
+    margin-top: 1.875rem;
 }
 
 .rented-summary {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
     background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.5rem;
     font-family: Consolas, sans-serif;
-    box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
-    text-align: center; /* centrér teksten inde i boksen */
+    box-shadow: 0.0625rem 0.0625rem 0.375rem rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .rented-summary h2 {
     margin: 0;
     color: #222;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
 }
 
-/* Biler */
 .car-display {
-    width: 85%; /* bredere */
-    margin: 0 auto; /* centreret */
-    padding-bottom: 60px;
+    width: calc(100% - 15vw);
+    margin-left: 15vw;
+    padding-bottom: 3.75rem;
 }
 
 .car-display h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .car-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 i stedet for 2 */
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem;
     justify-content: center;
 }
 
 .car-card {
     background-color: #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    box-shadow: 0.0625rem 0.0625rem 0.5rem rgba(0, 0, 0, 0.1);
     font-family: Consolas, sans-serif;
 }
 
 .car-card p {
-    margin: 5px 0;
-    font-size: 15px;
+    margin: 0.3125rem 0;
+    font-size: 0.9375rem;
     color: #333;
 }
 
 .car-img {
     width: 100%;
-    height: 180px;
+    height: 11.25rem;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    margin-bottom: 0.625rem;
 }
