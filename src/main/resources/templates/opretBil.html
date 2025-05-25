@@ -41,15 +41,6 @@
             <input type="number" th:field="*{price}" placeholder="Pris Per måned (DKK)" step="0.01" required>
 
 
-
-            <!-- lig i opret kunde
-            <select th:field="*{limitedOrUnlimited}" required>
-                <option value="" disabled selected>Leje type</option>
-                <option value="Limited">Begrænset (150 dage)</option>
-                <option value="Unlimited">Ubegrænset (3 måneder)</option>
-            </select>
-            -->
-
             <select th:field="*{carCondition}" required>
                 <option value="" disabled selected>Stand</option>
                 <option value="God">God</option>
@@ -62,15 +53,6 @@
                 <option value="Udlejet">Udlejet</option>
                 <option value="Tilgængelig">Tilgængelig</option>
             </select>
-
-            <!-- i opret kunde
-            <label>Leveringsdato:</label>
-            <input type="date" th:field="*{deliveryDate}">
-
-            <label>Afleveringsdato:</label>
-            <input type="date" th:field="*{returnDate}">
-            -->
-
 
             <button type="submit">Opret bil</button>
         </form>
@@ -91,18 +73,6 @@
         </div>
     </div>
 </div>
-
-<!--    <script>-->
-<!--        // Billed-preview når brugeren indtaster URL-->
-<!--        document.getElementById('carImageUrlInput').addEventListener('input', function () {-->
-<!--            const img = document.getElementById('imagePreview');-->
-<!--            const url = this.value;-->
-<!--            img.src = url;-->
-<!--            img.style.display = url ? 'block' : 'none';-->
-<!--        });-->
-<!--    </script>-->
-
-
 
 </body>
 </html>
