@@ -22,7 +22,7 @@ public class LoginController {
         return "login";
     }
 
-    // bruger login
+
 
     @PostMapping("/login")
     public String login(@RequestParam String username,
@@ -41,7 +41,7 @@ public class LoginController {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); //gør at login session blir clear
+        session.invalidate();
         return "redirect:/";
     }
 }
