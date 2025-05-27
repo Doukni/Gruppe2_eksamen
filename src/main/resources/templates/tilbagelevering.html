@@ -18,7 +18,10 @@
     <a th:if="${user == null}" th:href="@{/login}">Login</a>
     <a th:if="${user != null}" th:href="@{/logout}">Logout</a>
     <div class="user-info">
-        <h1>Velkommen, <span th:text="${user != null ? user.name : 'Gæst'}">User</span></h1>
+        <h1>Velkommen,
+            <span th:if="${user != null}" th:text="${user.name + ' ' + user.lastName}">Bruger</span>
+            <span th:if="${user == null}">Gæst</span>
+        </h1>
     </div>
 </div>
 
@@ -27,7 +30,7 @@
         <h2>Tilbagelevering af bil</h2>
         <form th:action="@{/tilbagelevering}" method="post" th:object="${tilbagelevering}">
             <label>Vælg bil:</label>
-            <select th:field="*{car}" required>
+            <select th:field="*{car.id}" required>
                 <option th:each="car : ${cars}"
                         th:if="${car.returned == null or !car.returned}"
                         th:value="${car.id}"
@@ -41,9 +44,13 @@
     <div class="form-box">
         <h3>Historik over tilbageleveringer</h3>
         <div th:each="ret : ${returns}">
-            <p><strong>Bil:</strong> <span th:text="${ret.car.brand + ' ' + ret.car.model}"></span></p>
-            <p><strong>Returneret dato:</strong> <span th:text="${ret.returnDate}"></span></p>
-            <p><strong>Lejepris:</strong> <span th:text="${ret.totalPrice + ' DKK'}"></span></p>
+            <p th:if="${ret.car != null}">
+                <strong>Bil:</strong>
+                <span th:if="${ret.car.brand != null and ret.car.model != null}"
+                      th:text="${ret.car.brand + ' ' + ret.car.model}">[Ukendt bil]</span>
+            </p>
+            <p><strong>Returneret dato:</strong> <span th:text="${ret.returnDate}">[Ukendt dato]</span></p>
+            <p><strong>Lejepris:</strong> <span th:text="${ret.totalPrice != null ? ret.totalPrice + ' DKK' : '[Ukendt]'}"></span></p>
             <hr/>
         </div>
     </div>
