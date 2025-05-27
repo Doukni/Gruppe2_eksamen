@@ -4,7 +4,7 @@ import com.example.gruppe2_eksamen.model.Car;
 import com.example.gruppe2_eksamen.model.Kunde;
 import com.example.gruppe2_eksamen.model.TilbageLevering;
 import com.example.gruppe2_eksamen.repository.CarRepo;
-import com.example.gruppe2_eksamen.repository.TilbageLeveringRepo;
+import com.example.gruppe2_eksamen.repository.TilbageleveringRepo;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +22,12 @@ import java.util.stream.Collectors;
 public class TilbageLeveringController {
 
     @Autowired
-    private TilbageLeveringRepo tilbageleveringRepo;
+    private TilbageleveringRepo tilbageleveringRepo;
 
     @Autowired
     private CarRepo carRepo;
 
-    @GetMapping("/tilbageLevering")
+    @GetMapping("/tilbagelevering")
     public String showPage(Model model, HttpSession session) {
         Object user = session.getAttribute("loggedUser");
         if (user == null) {
@@ -46,11 +46,11 @@ public class TilbageLeveringController {
         model.addAttribute("cars", filtreredeBiler);
         model.addAttribute("returns", tilbageleveringRepo.findAll());
         model.addAttribute("user", user);
-        return "tilbageLevering";
+        return "tilbagelevering";
     }
 
 
-    @PostMapping("/tilbageLevering")
+    @PostMapping("/tilbagelevering")
     public String processReturn(@ModelAttribute TilbageLevering tilbagelevering) {
 
         Car partialCar = tilbagelevering.getCar();
@@ -83,6 +83,6 @@ public class TilbageLeveringController {
         car.setReturned(true);
         carRepo.save(car);
 
-        return "redirect:/tilbageLevering";
+        return "redirect:/tilbagelevering";
     }
 }

@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TilbageLeveringRepo extends JpaRepository<TilbageLevering, Integer> {
+public interface TilbageleveringRepo extends JpaRepository<TilbageLevering, Integer> {
 }
