@@ -44,9 +44,13 @@
     <div class="form-box">
         <h3>Historik over tilbageleveringer</h3>
         <div th:each="ret : ${returns}">
-            <p><strong>Bil:</strong> <span th:text="${ret.car.brand + ' ' + ret.car.model}"></span></p>
-            <p><strong>Returneret dato:</strong> <span th:text="${ret.returnDate}"></span></p>
-            <p><strong>Lejepris:</strong> <span th:text="${ret.totalPrice + ' DKK'}"></span></p>
+            <p th:if="${ret.car != null}">
+                <strong>Bil:</strong>
+                <span th:if="${ret.car.brand != null and ret.car.model != null}"
+                      th:text="${ret.car.brand + ' ' + ret.car.model}">[Ukendt bil]</span>
+            </p>
+            <p><strong>Returneret dato:</strong> <span th:text="${ret.returnDate}">[Ukendt dato]</span></p>
+            <p><strong>Lejepris:</strong> <span th:text="${ret.totalPrice != null ? ret.totalPrice + ' DKK' : '[Ukendt]'}"></span></p>
             <hr/>
         </div>
     </div>

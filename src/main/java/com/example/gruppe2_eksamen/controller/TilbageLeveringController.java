@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class TilbageLeveringController {
-
 
     @Autowired
     private TilbageLeveringRepo tilbageleveringRepo;
@@ -26,23 +27,39 @@ public class TilbageLeveringController {
     @Autowired
     private CarRepo carRepo;
 
-    @GetMapping("/tilbagelevering")
+    @GetMapping("/tilbageLevering")
     public String showPage(Model model, HttpSession session) {
+        Object user = session.getAttribute("loggedUser");
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        // Fjern biler med vigtige null-felter
+        List<Car> filtreredeBiler = carRepo.findAll().stream()
+                .filter(car -> car != null &&
+                        car.getBrand() != null &&
+                        car.getModel() != null &&
+                        car.getLicensePlate() != null)
+                .collect(Collectors.toList());
+
         model.addAttribute("tilbagelevering", new TilbageLevering());
-        model.addAttribute("cars", carRepo.findAll());
+        model.addAttribute("cars", filtreredeBiler);
         model.addAttribute("returns", tilbageleveringRepo.findAll());
-        model.addAttribute("user", session.getAttribute("loggedUser"));
-        return "tilbagelevering";
+        model.addAttribute("user", user);
+        return "tilbageLevering";
     }
 
-    @PostMapping("/tilbagelevering")
+
+    @PostMapping("/tilbageLevering")
     public String processReturn(@ModelAttribute TilbageLevering tilbagelevering) {
 
         Car partialCar = tilbagelevering.getCar();
-
+        if (partialCar == null || partialCar.getId() == 0) {
+            throw new RuntimeException("Ingen bil blev valgt til tilbagelevering");
+        }
 
         Car car = carRepo.findById(partialCar.getId())
-                .orElseThrow(() -> new RuntimeException("Car not found"));
+                .orElseThrow(() -> new RuntimeException("Bil ikke fundet"));
 
         Kunde kunde = car.getKunde();
 
@@ -52,7 +69,6 @@ public class TilbageLeveringController {
             long months = ChronoUnit.MONTHS.between(start, end);
             if (months == 0) months = 1;
 
-            // håndtere null værdier fordi Double ikke er en primitiv datatype
             double price = car.getPrice() != null ? car.getPrice() : 0.0;
             double total = months * price;
 
@@ -60,16 +76,13 @@ public class TilbageLeveringController {
             tilbagelevering.setTotalPrice(total);
         }
 
-
         tilbagelevering.setCar(car);
-
         tilbageleveringRepo.save(tilbagelevering);
-
 
         car.setAvailability("Klar til afhentning");
         car.setReturned(true);
         carRepo.save(car);
 
-        return "redirect:/tilbagelevering";
+        return "redirect:/tilbageLevering";
     }
 }
