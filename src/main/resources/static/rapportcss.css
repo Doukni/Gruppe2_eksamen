@@ -6,23 +6,25 @@ body {
     font-family: Consolas, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
+    display: flex;
 }
 
 .sidebar {
     position: fixed;
-    top: 0;
     left: 0;
-    width: 13rem;
+    top: 0;
+    width: 12.5rem;
     height: 100vh;
     background-color: #d3d3d3;
     padding-top: 1.25rem;
+    box-shadow: 0.125rem 0 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 .menu-title {
     text-align: center;
+    margin-bottom: 1.875rem;
     font-size: 1.5rem;
     color: #333;
-    margin-bottom: 1.875rem;
 }
 
 .sidebar a {
@@ -44,8 +46,13 @@ body {
     text-align: center;
     font-size: 0.75rem;
     padding: 0.625rem;
+    background-color: #d3d3d3;
 }
-
+.user-info h1 {
+    color: #000;
+    font-family: Consolas, sans-serif;
+    font-size: 1.1rem;
+}
 .main-content-wrapper {
     margin-left: 14rem;
     padding: 2.5rem;

@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.List;
 
@@ -40,6 +42,7 @@ public class RapportController {
         model.addAttribute("rapporter", rapportRepo.findAll());
         model.addAttribute("cars", carRepo.findAll());
         model.addAttribute("rapport", new Rapport());
+
         return "rapport";
     }
 
@@ -98,5 +101,11 @@ public class RapportController {
     public String visAlleRapporter(HttpSession session, Model model) {
         model.addAttribute("rapporter", rapportRepo.findAll());
         return "rapport-oversigt";
+    }
+
+    @PostMapping("/sletRapport")
+    public String deleteRapport(@RequestParam Long id) {
+        rapportRepo.deleteById(id);
+        return "redirect:/rapport";
     }
 }

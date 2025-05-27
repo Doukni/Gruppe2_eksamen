@@ -55,6 +55,12 @@
                 </div>
                 <div class="rapport-body">
                     <pre class="rapport-beskrivelse" th:text="${r.beskrivelse}">Beskrivelse</pre>
+
+                    <form th:action="@{/sletRapport}" method="post" style="margin-top: 10px;">
+                        <input type="hidden" name="id" th:value="${r.id}" />
+                        <button type="submit">Slet</button>
+                    </form>
+
                 </div>
             </div>
         </div>
