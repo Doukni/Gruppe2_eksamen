@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login() {
         return "login";
     }
@@ -33,7 +33,7 @@ public class LoginController {
 
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("loggedUser", user);
-            return "redirect:/";
+            return "redirect:/desktop";
         } else {
             return "login";
         }
@@ -42,6 +42,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/desktop";
     }
 }

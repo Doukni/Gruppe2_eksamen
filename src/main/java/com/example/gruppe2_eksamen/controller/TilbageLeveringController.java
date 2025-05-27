@@ -30,9 +30,8 @@ public class TilbageLeveringController {
     @GetMapping("/tilbagelevering")
     public String showPage(Model model, HttpSession session) {
         Object user = session.getAttribute("loggedUser");
-        model.addAttribute("user", user); // OK hvis null
+        model.addAttribute("user", user);
 
-        // Fjern biler med vigtige null-felter
         List<Car> filtreredeBiler = carRepo.findAll().stream()
                 .filter(car -> car != null &&
                         car.getBrand() != null &&
@@ -45,7 +44,6 @@ public class TilbageLeveringController {
         model.addAttribute("returns", tilbageleveringRepo.findAll());
         return "tilbagelevering";
     }
-
 
     @PostMapping("/tilbagelevering")
     public String processReturn(@ModelAttribute TilbageLevering tilbagelevering) {
@@ -76,8 +74,9 @@ public class TilbageLeveringController {
         tilbagelevering.setCar(car);
         tilbageleveringRepo.save(tilbagelevering);
 
-        car.setAvailability("Klar til afhentning");
+        car.setAvailability("Tilgængelig");
         car.setReturned(true);
+        car.setKunde(null);  // Unbind customer
         carRepo.save(car);
 
         return "redirect:/tilbagelevering";

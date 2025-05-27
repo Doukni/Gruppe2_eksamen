@@ -45,7 +45,6 @@ public class OpretKundeController {
                              @RequestParam("carId") int carId,
                              Model model) {
 
-        // Tjek kredit og betaling
         if (!kunde.getKreditgodkendt() || !kunde.getBetaltForsteYdelse()) {
             model.addAttribute("urlError", "Kunden er ikke kreditgodkendt eller mangler betaling.");
             model.addAttribute("kunde", kunde);
@@ -54,7 +53,6 @@ public class OpretKundeController {
             return "opretKunde";
         }
 
-        // Sæt leveringsdato
         LocalDate deliveryDate = LocalDate.now();
         kunde.setDeliveryDate(deliveryDate);
 
@@ -97,6 +95,7 @@ public class OpretKundeController {
             return "opretKunde";
         }
 
-        return "redirect:/";
+        model.addAttribute("message", "Kunde oprettet med succes.");
+        return "redirect:/opretKunde";
     }
 }
