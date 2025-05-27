@@ -30,9 +30,7 @@ public class TilbageLeveringController {
     @GetMapping("/tilbagelevering")
     public String showPage(Model model, HttpSession session) {
         Object user = session.getAttribute("loggedUser");
-        if (user == null) {
-            return "redirect:/login";
-        }
+        model.addAttribute("user", user); // OK hvis null
 
         // Fjern biler med vigtige null-felter
         List<Car> filtreredeBiler = carRepo.findAll().stream()
@@ -45,7 +43,6 @@ public class TilbageLeveringController {
         model.addAttribute("tilbagelevering", new TilbageLevering());
         model.addAttribute("cars", filtreredeBiler);
         model.addAttribute("returns", tilbageleveringRepo.findAll());
-        model.addAttribute("user", user);
         return "tilbagelevering";
     }
 
