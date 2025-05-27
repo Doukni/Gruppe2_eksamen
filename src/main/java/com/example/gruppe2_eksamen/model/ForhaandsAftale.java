@@ -12,7 +12,7 @@ public class ForhaandsAftale {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "car_id")
+    @JoinColumn(name = "car_id", nullable = true)
     private Car car;
 
     @Column

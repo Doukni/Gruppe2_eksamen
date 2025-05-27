@@ -17,6 +17,7 @@ public class Rapport {
     private String beskrivelse;
 
     @ManyToOne
+    @JoinColumn(name = "carId", nullable = true)
     private Car car;
 
 

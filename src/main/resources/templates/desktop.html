@@ -45,7 +45,8 @@
             <p><strong>Farve:</strong> <span th:text="${car.color}"></span></p>
             <p><strong>Nummerplade:</strong> <span th:text="${car.licensePlate}"></span></p>
             <p><strong>Status:</strong> <span th:text="${car.availability}"></span></p>
-            <form th:action="@{'/deleteCar/' + ${car.id}}" method="post" onsubmit="return confirm('Er du sikker på at du vil slette bilen?');">
+            <form th:action="@{'/desktop/deleteCar/' + ${car.id}}" method="post"
+                  onsubmit="return confirm('Er du sikker på at du vil slette bilen?');">
                 <button type="submit">Slet bil</button>
             </form>
         </div>
